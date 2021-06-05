@@ -1,0 +1,11 @@
+<h1>All the flashcards</h1> 
+
+<%= link_to "Create Flashcard", new_flashcard_path %>
+<% @flashcards.each do |flashcard| %>
+<ul>
+    <li>
+        <h2><%= flashcard.question %><br>
+        <%= link_to "Answer/View Card", flashcard_path(flashcard) %></h2>
+    </li>
+</ul>
+<% end %>

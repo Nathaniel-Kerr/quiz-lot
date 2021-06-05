@@ -1,0 +1,5 @@
+<% if Current.user %>
+<h1>Welcome: <%= Current.user.name %></h1><br> 
+
+<%= button_to "Logout", logout_path, method: "delete" %>
+<% end %>

@@ -1,11 +1,23 @@
-<h1>All the flashcards</h1> 
+<% if Current.user %>
+    <h1>All <%= Current.user.name %>'s flashcards</h1> 
 
-<%= link_to "Create Flashcard", new_flashcard_path %>
-<% @flashcards.each do |flashcard| %>
-<ul>
-    <li>
-        <h2><%= flashcard.question %><br>
-        <%= link_to "Answer/View Card", flashcard_path(flashcard) %></h2>
-    </li>
-</ul>
+    <%= link_to "Home", user_path(Current.user) %><br>
+
+    <ul><% current_user.flashcards.each do |flashcard| %>
+        <li>
+            <h2><%= flashcard.question %><br>
+            <%= link_to "Answer/View Card", flashcard_path(flashcard) %></h2>
+        </li>
+    </ul>
+    <% end %>
+<% else %>
+        <h1>Current flashcards</h1>
+        <% @flashcards.each do |flashcard| %>
+    <ul>
+        <li>
+            <h2><%= flashcard.question %><br>
+            <%= link_to "Answer/View Card", flashcard_path(flashcard) %></h2>
+        </li>
+    </ul>
+    <% end %>
 <% end %>

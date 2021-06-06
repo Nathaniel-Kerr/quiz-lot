@@ -3,7 +3,7 @@ class CreateFlashcards < ActiveRecord::Migration[6.1]
     create_table :flashcards do |t|
       t.string :question
       t.text :answer
-      t.string :category
+      t.integer :user_id
 
       t.timestamps
     end

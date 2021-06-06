@@ -1,13 +1,15 @@
-<h1>Make a new flashcard!</h1>
+
+<h1>Make a new flashcard <%= Current.user.name%> </h1> 
 <%= form_for @flashcard do |f| %>
+
+    <%= f.hidden_field :user_id %>
+
     <%= f.label :question %>
     <%= f.text_field :question %><br>
 
     <%= f.label :answer %>
     <%= f.text_field :answer %><br>
 
-    <%= f.label :category %>
-    <%= f.text_field :category %>
 
     <%= f.submit %>
 <% end %>

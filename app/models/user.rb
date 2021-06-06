@@ -1,7 +1,7 @@
 class User < ApplicationRecord
     
-    has_many :user_flashcards
-    has_many :flashcards, through: :user_flashcards
+    has_many :flashcards
+    
     
     has_secure_password
     validates :name, presence: true

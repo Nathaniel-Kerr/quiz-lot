@@ -1,7 +1,11 @@
 class Flashcard < ApplicationRecord
-    has_many :user_flashcards
-    has_many :users, through: :user_flashcards
+    belongs_to :user
+    has_many :Flashcard_categorys
+    has_many :categorys, through: :Flashcard_categorys
 
-    # validates :question, presence: true
-    # validates :answer, presence: true
+    accepts_nested_attributes_for :Flashcard_categorys
+
+    validates :question, presence: true
+    validates :answer, presence: true
+
 end

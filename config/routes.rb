@@ -3,8 +3,13 @@ Rails.application.routes.draw do
   get '/', to: 'sessions#welcome'
   root to: 'sessions#welcome'
   
+  resources :users do
+    resources :flashcards, only: [:show, :idex, :new]
+  end
+  get 'users/:id/user_flashcards' => 'user#user_flashcards'
+
   resources :flashcards
-  resources :users
+  resources :categorys
 
   resources :sessions
   get '/login', to: 'sessions#login'
@@ -13,5 +18,4 @@ Rails.application.routes.draw do
 
   get "/auth/:provider/callback" => 'sessions#omniauth'
   
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

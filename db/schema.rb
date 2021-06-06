@@ -10,19 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_04_175945) do
+ActiveRecord::Schema.define(version: 2021_06_06_013859) do
 
-  create_table "flashcards", force: :cascade do |t|
-    t.string "question"
-    t.text "answer"
-    t.string "category"
+  create_table "categorys", force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "user_flashcards", force: :cascade do |t|
-    t.integer "user_id"
+  create_table "flashcard_categorys", force: :cascade do |t|
     t.integer "flashcard_id"
+    t.integer "category_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "flashcards", force: :cascade do |t|
+    t.string "question"
+    t.text "answer"
+    t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

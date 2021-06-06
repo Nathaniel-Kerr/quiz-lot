@@ -1,5 +1,8 @@
 <% if Current.user %>
 <h1>Welcome: <%= Current.user.name %></h1><br> 
 
+<%= link_to "Show all flashcards", flashcards_path %><br>
+<%= link_to "New flashcard", new_user_flashcard_path(@user) %><br>
+
 <%= button_to "Logout", logout_path, method: "delete" %>
 <% end %>

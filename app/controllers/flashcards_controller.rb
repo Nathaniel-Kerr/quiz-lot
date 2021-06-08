@@ -1,6 +1,6 @@
 class FlashcardsController < ApplicationController
-
     def index
+        @public_card = Flashcard.public_card
         if session[:user_id]
             @flashcards = User.find(session[:user_id]).flashcards
         else
@@ -16,12 +16,13 @@ class FlashcardsController < ApplicationController
     def new
     
         @flashcard = Flashcard.new(user_id: params[:user_id])
+        @subjects = Subject.all 
+        @flashcardsubject = FlashcardSubject.new
+        @status = ["public", "private"]
     
     end
 
     def create
-      
-
         @flashcard = Flashcard.new(flashcard_params)
 
         if @flashcard.save 
@@ -53,6 +54,12 @@ class FlashcardsController < ApplicationController
     private
 
     def flashcard_params
-        params.require(:flashcard).permit(:question, :answer, :user_id)
+        params.require(:flashcard).permit(
+            :question,
+             :answer, 
+             :status,
+             :user_id,  
+             flashcard_subjects_attributes: [:subject_id, :name, :id]
+            )
     end
 end

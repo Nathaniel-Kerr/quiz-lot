@@ -1,6 +1,17 @@
-<h1>Create User Account</h1>
+<h1>Create Category</h1>
 
 <%= form_for @user do |f| %>
+
+    <% if @user.errors.any? %>
+        <div class="fields with errors">
+        <h2>Errors:</h2>
+        <ul>
+            <% @user.errors.full_messages.each do |message| %>
+                <div><li><%= message %></li></div>
+            <% end %>
+        </ul>
+    <% end %>
+
     <%= f.label :name %>
     <%= f.text_field :name %><br>
 

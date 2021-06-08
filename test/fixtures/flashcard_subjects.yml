@@ -1,0 +1,9 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  flashcard_id: 1
+  subject_id: 1
+
+two:
+  flashcard_id: 1
+  subject_id: 1

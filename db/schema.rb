@@ -10,17 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_06_013859) do
+ActiveRecord::Schema.define(version: 2021_06_08_030425) do
 
-  create_table "categorys", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "flashcard_categorys", force: :cascade do |t|
+  create_table "flashcard_subjects", force: :cascade do |t|
     t.integer "flashcard_id"
-    t.integer "category_id"
+    t.integer "subject_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -29,6 +23,13 @@ ActiveRecord::Schema.define(version: 2021_06_06_013859) do
     t.string "question"
     t.text "answer"
     t.integer "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.boolean "status"
+  end
+
+  create_table "subjects", force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

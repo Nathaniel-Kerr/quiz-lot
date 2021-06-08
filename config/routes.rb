@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   get 'users/:id/user_flashcards' => 'user#user_flashcards'
 
   resources :flashcards
-  resources :categorys
+  resources :subjects
 
   resources :sessions
   get '/login', to: 'sessions#login'

@@ -2,11 +2,11 @@ class User < ApplicationRecord
     
     has_many :flashcards
     
-    
     has_secure_password
     validates :name, presence: true
     validates :email, presence: true
-    validates_uniqueness_of :email
+    validates :email, uniqueness: { case_sensitive: false }
+    
 
     before_create :check_params
 

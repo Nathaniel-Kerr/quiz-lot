@@ -1,0 +1,14 @@
+<% if current_user %>
+    <h1>All <%= current_user.name %>'s flashcards</h1> 
+
+    <%= link_to "Home", user_path(current_user) %><br>
+    <%= link_to "Create Subject", subject_path('new') %><br>
+
+    <ul><% current_user.flashcards.each do |flashcard| %>
+        <li>
+            <h2><%= flashcard.question %><br>
+            <%= link_to "Answer/View Card", flashcard_path(flashcard) %></h2>
+        </li>
+    </ul>
+    <% end %>
+<% end %>

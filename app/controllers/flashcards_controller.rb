@@ -1,15 +1,21 @@
 class FlashcardsController < ApplicationController
     def index
-        @public_card = Flashcard.public_card
-        if session[:user_id]
-            @flashcards = User.find(session[:user_id]).flashcards
+        @public_cards = Flashcard.public_card
+        
+        if params[:user_id]
+            # @flashcards = User.find(params[:user_id]).flashcards
         else
             @flashcards = Flashcard.all
         end 
     end
 
+    def users_flashcards
+        if params[:user_id]
+            @flashcards = User.find(params[:user_id]).flashcards.public_card
+        end
+    end
+
     def show
-        
         @flashcard = Flashcard.find(params[:id])
     end
 
@@ -34,6 +40,7 @@ class FlashcardsController < ApplicationController
 
     def edit
         @flashcard = Flashcard.find(params[:id])
+        @subjects = Subject.all
     end
 
     def update
@@ -58,6 +65,8 @@ class FlashcardsController < ApplicationController
             :question,
              :answer, 
              :status,
+             :flashcard,
+             :id,
              :user_id,  
              flashcard_subjects_attributes: [:subject_id, :name, :id]
             )

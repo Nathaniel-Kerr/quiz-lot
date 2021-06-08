@@ -1,6 +1,8 @@
 <% if current_user %>
 <h1>Welcome: <%= current_user.name %></h1><br> 
 
+<%= link_to "Edit Account", edit_user_path(current_user) %><br>
+
 <%= link_to "See your flashcards", flashcards_path %><br>
 
 <%= link_to "Create Subject", subject_path('new') %><br>

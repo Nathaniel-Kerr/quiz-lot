@@ -1,14 +1,16 @@
 Rails.application.routes.draw do
 
-  get '/', to: 'sessions#welcome'
+  # get '/', to: 'sessions#welcome'
   root to: 'sessions#welcome'
   
   resources :users do
     resources :flashcards, only: [:show, :idex, :new]
+    get 'users_flashcards', to: "flashcards#users_flashcards"
   end
-  get 'users/:id/user_flashcards' => 'user#user_flashcards'
+  # get 'users/:id/user_flashcards' => 'user#user_flashcards'
 
-  resources :flashcards
+  resources :flashcards 
+
   resources :subjects
 
   resources :sessions
@@ -19,3 +21,4 @@ Rails.application.routes.draw do
   get "/auth/:provider/callback" => 'sessions#omniauth'
   
 end
+

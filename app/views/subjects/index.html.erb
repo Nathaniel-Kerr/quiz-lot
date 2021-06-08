@@ -8,6 +8,7 @@
         <li>
             <h2><%= flashcard.question %><br>
             <%= link_to "Answer/View Card", flashcard_path(flashcard) %></h2>
+            <%= link_to subject.flashcard.name, flashcard_subjects_path(@subject.flashcard) %>
         </li>
     </ul>
     <% end %>

@@ -14,11 +14,13 @@
         <h1>Available Flashcards</h1>
         <h3><%= link_to "Home Page", root_path %><br></h3>
         <h3><%= link_to 'Create Account and make your own flashcards and subjects!', user_path('new') %></h3><br>
-        <% @public_card.each do |flashcard| %>
+        
+        <% @public_cards.each do |flashcard| %>
     <ul>
         <li>
             <h2><%= flashcard.question %><br>
             <%= link_to "Answer/View Card", flashcard_path(flashcard) %></h2>
+            <%= link_to "see all #{flashcard.user.name}'s public flashcards", user_users_flashcards_path(flashcard.user) %>
         </li>
     </ul>
     <% end %>

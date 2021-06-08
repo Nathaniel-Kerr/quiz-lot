@@ -5,8 +5,8 @@ class SubjectsController < ApplicationController
     end
 
     def index
-        if session[:user_id]
-            @subjects = Subject.all
+        if params[:user_flashcards]
+            @subjects = Subject.find(params[:flashcard_id]).subjects
         end
     end
 

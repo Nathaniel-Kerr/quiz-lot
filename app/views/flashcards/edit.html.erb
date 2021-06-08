@@ -6,5 +6,13 @@
     <%= f.label :answer %>
     <%= f.text_field :answer %><br>
 
+     <%= f.fields_for :flashcard_subjects, @flashcardsubject do |ff| %>
+        <%= ff.label :subject_id, 'Select Subject: ' %>
+        <%= ff.collection_select(:subject_id, @subjects, :id, :name) %><br>
+        <% end %>
+
+    <%= f.label :status, "Check to make post public" %>
+    <%= f.check_box :status  %><br>
+
     <%= f.submit %>
 <% end %>

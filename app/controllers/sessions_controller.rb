@@ -7,14 +7,13 @@ class SessionsController < ApplicationController
             session[:user_id] = @user.id
             redirect_to user_path(@user)
         else
-            message = "Invalid email or password"
-            redirect_to login_path, notice: message
+            redirect_to login_path
         end
     end
 
     def destroy
         session[:user_id] = nil
-        redirect_to root_path, notice: 'Logged out'
+        redirect_to root_path
     end
 
     def omniauth
